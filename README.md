@@ -18,7 +18,7 @@ Tener instalados los siguientes programas antes de continuar:
 
 ### Clonar el Repositorio
 
-git clone <URL_DEL_REPOSITORIO>
+git clone https://github.com/nafioren/JavaSharkPDV.git
 cd JavaSharkPDV
 ## Levantar el Proyecto con Docker
 -Levanta los contenedores usando Docker Compose:
