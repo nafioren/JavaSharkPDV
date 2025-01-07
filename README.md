@@ -27,7 +27,6 @@ El archivo docker-compose.yml hará lo siguiente:
 - Levantará un contenedor MySQL con la base de datos PDV.  
 - La aplicación estará disponible en: [http://localhost:8080](http://localhost:8080)
 
-
 ## Configuración Manual Base de Datos MySQL
 
 - Si no usas Docker, configura una base de datos MySQL manualmente:  
@@ -51,8 +50,11 @@ El archivo docker-compose.yml hará lo siguiente:
   mvn clean package
 
 
+
 - Ejecuta el JAR generado:
+ ```bash
 java -jar target/JavaSharkPDV-0.0.1-SNAPSHOT.jar
+ ```
 
 Pruebas y Reportes
 Ejecutar Pruebas Unitarias
