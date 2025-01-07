@@ -46,11 +46,11 @@ mvn clean package
 Ejecuta el JAR generado:
 java -jar target/JavaSharkPDV-0.0.1-SNAPSHOT.jar
 
-##Pruebas y Reportes
+## Pruebas y Reportes
 Ejecutar Pruebas Unitarias
 El proyecto utiliza Surefire para ejecutar las pruebas:
 mvn test
-##Generar Reporte de Cobertura (Jacoco)
+## Generar Reporte de Cobertura (Jacoco)
 Para generar un informe de cobertura:
 mvn jacoco:prepare-agent test jacoco:report
 El informe estará disponible en:
