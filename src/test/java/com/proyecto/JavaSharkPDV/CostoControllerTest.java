@@ -70,7 +70,7 @@ public class CostoControllerTest {
 
         doNothing().when(costoService).eliminarCosto(1L, 2L);
 
-        // Realiza la solicitud DELETE para eliminar el costo
+
         mockMvc.perform(delete("/api/costos")
                         .param("idOrigen", "1")
                         .param("idDestino", "2"))

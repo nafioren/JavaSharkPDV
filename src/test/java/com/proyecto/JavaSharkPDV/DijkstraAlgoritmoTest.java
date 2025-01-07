@@ -33,7 +33,7 @@ class DijkstraAlgoritmoTest {
 
         @Test
         void calcularCaminoMinimoTest() {
-            // Simular que los puntos de venta existen
+
             when(puntoDeVentaRepository.existsById(1L)).thenReturn(true);
             when(puntoDeVentaRepository.existsById(2L)).thenReturn(true);
 
@@ -91,19 +91,20 @@ class DijkstraAlgoritmoTest {
             when(puntoDeVentaRepository.findAll()).thenReturn(List.of(puntoA, new PuntoDeVenta(2L, "B"), puntoB));
 
 
-            Costo costoAB = new Costo(puntoA, new PuntoDeVenta(2L, "B"), 10); // Cambiado a int
-            Costo costoBC = new Costo(new PuntoDeVenta(2L, "B"), puntoB, 15); // Cambiado a int
+            Costo costoAB = new Costo(puntoA, new PuntoDeVenta(2L, "B"), 10);
+            Costo costoBC = new Costo(new PuntoDeVenta(2L, "B"), puntoB, 15);
 
             when(costoRepository.findByOrigen_Id(1L)).thenReturn(List.of(costoAB));
             when(costoRepository.findByOrigen_Id(2L)).thenReturn(List.of(costoBC));
 
-            // Llamada al método de calcular camino mínimo
+
             CaminoMinimoResponse response = dijkstraAlgoritmo.calcularCaminoMinimo(1L, 3L);
 
-            // Verificar el costo total y el camino calculado
+
             assertEquals(25, response.getCosto());
             assertEquals(List.of("1", "2", "3"), response.getCamino());
         }
-
 }
+
+
 

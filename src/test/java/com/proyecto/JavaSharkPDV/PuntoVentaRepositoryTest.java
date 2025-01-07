@@ -1,7 +1,10 @@
 package com.proyecto.JavaSharkPDV;
 
 
+import com.proyecto.JavaSharkPDV.model.PuntoDeVenta;
 import com.proyecto.JavaSharkPDV.repositories.PuntoDeVentaRepository;
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -30,12 +33,12 @@ public class PuntoVentaRepositoryTest {
         @Autowired
         private PuntoDeVentaRepository puntoDeVentaRepository;
 
-       /* @Test
+        @Test
         public void testGuardarPuntoVenta() {
             PuntoDeVenta punto = new PuntoDeVenta(1L, "CABA");
             puntoDeVentaRepository.save(punto);
             Assertions.assertTrue(puntoDeVentaRepository.findById(1L).isPresent());
-        }*/
+        }
 
 
 }

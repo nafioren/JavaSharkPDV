@@ -29,11 +29,11 @@ import static org.mockito.Mockito.when;
 public class PuntoVentaServiceTest {
 
 
-        @Mock
-        private PuntoDeVentaRepository puntoDeVentaRepository;
+    @Mock
+    private PuntoDeVentaRepository puntoDeVentaRepository;
 
-        @InjectMocks
-        private PuntoDeVentaService puntoDeVentaService;
+    @InjectMocks
+    private PuntoDeVentaService puntoDeVentaService;
 
     @BeforeEach
     void setUp() {
@@ -44,92 +44,80 @@ public class PuntoVentaServiceTest {
         puntoDeVenta.setNombre("Punto de Venta 1");
     }
 
-        @Test
-        public void testAgregarPuntoVenta() {
-            // Crear un punto de venta simulado
-            PuntoDeVenta puntoDeVenta = new PuntoDeVenta("Test");
+    @Test
+    public void testAgregarPuntoVenta() {
+        // Crear un punto de venta simulado
+        PuntoDeVenta puntoDeVenta = new PuntoDeVenta("Test");
 
-            // Configurar el comportamiento del mock
-            when(puntoDeVentaRepository.save(Mockito.any(PuntoDeVenta.class)))
-                    .thenAnswer(invocation -> {
-                        PuntoDeVenta pv = invocation.getArgument(0);
-                        pv.setId(1L); // Simular que la base de datos asigna un ID
-                        return pv;
-                    });
+        // Configurar el comportamiento del mock
+        when(puntoDeVentaRepository.save(Mockito.any(PuntoDeVenta.class)))
+                .thenAnswer(invocation -> {
+                    PuntoDeVenta pv = invocation.getArgument(0);
+                    pv.setId(1L); // Simular que la base de datos asigna un ID
+                    return pv;
+                });
 
-            // Ejecutar el método del servicio
-            PuntoDeVenta resultado = puntoDeVentaService.agregar(puntoDeVenta);
+        // Ejecutar el método del servicio
+        PuntoDeVenta resultado = puntoDeVentaService.agregar(puntoDeVenta);
 
-            // Validar que el resultado no sea nulo y tenga un ID asignado
-            assertNotNull(resultado.getId());
-        }
-
-
+        // Validar que el resultado no sea nulo y tenga un ID asignado
+        assertNotNull(resultado.getId());
+    }
 
 
+    @Test
+    void testActualizar_Existente() {
 
-        @Test
-        void testActualizar_Existente() {
-            // Preparación
-            PuntoDeVenta puntoActualizado = new PuntoDeVenta();
-            puntoActualizado.setId(1L);
-            puntoActualizado.setNombre("Punto de Venta Actualizado");
+        PuntoDeVenta puntoActualizado = new PuntoDeVenta();
+        puntoActualizado.setId(1L);
+        puntoActualizado.setNombre("Punto de Venta Actualizado");
 
-            PuntoDeVenta puntoDeVenta = new PuntoDeVenta();
-            when(puntoDeVentaRepository.findById(1L)).thenReturn(Optional.of(puntoDeVenta));
-            when(puntoDeVentaRepository.save(Mockito.any(PuntoDeVenta.class))).thenReturn(puntoActualizado);
+        PuntoDeVenta puntoDeVenta = new PuntoDeVenta();
+        when(puntoDeVentaRepository.findById(1L)).thenReturn(Optional.of(puntoDeVenta));
+        when(puntoDeVentaRepository.save(Mockito.any(PuntoDeVenta.class))).thenReturn(puntoActualizado);
+
+        PuntoDeVenta puntoDeVentaResultado = puntoDeVentaService.actualizar(1L, puntoActualizado);
+
+        assertNotNull(puntoDeVentaResultado);
+        assertEquals("Punto de Venta Actualizado", puntoDeVentaResultado.getNombre());
+    }
+
+    @Test
+    void testActualizar_NoExistente() {
+
+        PuntoDeVenta puntoActualizado = new PuntoDeVenta();
+        puntoActualizado.setId(1L);
+        puntoActualizado.setNombre("Punto de Venta Actualizado");
+
+        // Simula que no se encuentra el punto de venta
+        when(puntoDeVentaRepository.findById(1L)).thenReturn(Optional.empty());
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            puntoDeVentaService.actualizar(1L, puntoActualizado);
+        });
+
+        assertEquals("Punto de Venta con ID 1 no encontrado", exception.getMessage());
+    }
+
+    @Test
+    void testEliminar_Existente() {
+        when(puntoDeVentaRepository.existsById(1L)).thenReturn(true);
+        puntoDeVentaService.eliminar(1L);
+        verify(puntoDeVentaRepository, times(1)).deleteById(1L);
+    }
+
+    @Test
+    void testEliminar_NoExistente() {
+        // Simula que el punto de venta no existe
+        when(puntoDeVentaRepository.existsById(1L)).thenReturn(false);
 
 
-            // Ejecución
-            PuntoDeVenta puntoDeVentaResultado = puntoDeVentaService.actualizar(1L, puntoActualizado);
-
-            // Verificación
-            assertNotNull(puntoDeVentaResultado);
-            assertEquals("Punto de Venta Actualizado", puntoDeVentaResultado.getNombre());
-        }
-
-        @Test
-        void testActualizar_NoExistente() {
-            // Preparación
-            PuntoDeVenta puntoActualizado = new PuntoDeVenta();
-            puntoActualizado.setId(1L);
-            puntoActualizado.setNombre("Punto de Venta Actualizado");
-
-            // Simula que no se encuentra el punto de venta
-            when(puntoDeVentaRepository.findById(1L)).thenReturn(Optional.empty());
-
-            // Ejecución y verificación
-            RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-                puntoDeVentaService.actualizar(1L, puntoActualizado);
-            });
-
-            assertEquals("Punto de Venta con ID 1 no encontrado", exception.getMessage());
-        }
-
-        @Test
-        void testEliminar_Existente() {
-            // Preparación
-            when(puntoDeVentaRepository.existsById(1L)).thenReturn(true);
-
-            // Ejecución
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             puntoDeVentaService.eliminar(1L);
+        });
 
-            // Verificación
-            verify(puntoDeVentaRepository, times(1)).deleteById(1L);
-        }
-
-        @Test
-        void testEliminar_NoExistente() {
-            // Simula que el punto de venta no existe
-            when(puntoDeVentaRepository.existsById(1L)).thenReturn(false);
-
-            // Ejecución y verificación
-            RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-                puntoDeVentaService.eliminar(1L);
-            });
-
-            assertEquals("Punto de Venta con ID 1 no encontrado", exception.getMessage());
-        }
+        assertEquals("Punto de Venta con ID 1 no encontrado", exception.getMessage());
+    }
 
 
 

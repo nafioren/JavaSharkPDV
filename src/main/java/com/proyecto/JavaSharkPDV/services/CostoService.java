@@ -98,10 +98,10 @@ public class CostoService {
 
 
     public Integer obtenerCosto(Long idOrigen, Long idDestino) {
-        // Asumimos que el costo se devuelve como Integer en la base de datos
+
         return costoRepository.findByOrigen_IdAndDestino_Id(idOrigen, idDestino)
-                .map(Costo::getCosto)  // No hace falta mapear a Double, se deja como Integer
-                .orElse(Integer.MAX_VALUE);  // Devolvemos Integer.MAX_VALUE en caso de no encontrar el costo
+                .map(Costo::getCosto)
+                .orElse(Integer.MAX_VALUE);
     }
 
     public void eliminarCosto(Long idOrigen, Long idDestino) {
@@ -117,7 +117,7 @@ public class CostoService {
         PuntoDeVenta destino = puntoDeVentaRepository.findById(request.getIdDestino())
                 .orElseThrow(() -> new IllegalArgumentException("Punto de venta de destino no existe"));
 
-        // Si request.getCosto() ya es de tipo int, no es necesario convertirlo a intValue()
+
         Costo costo = new Costo(origen, destino, request.getCosto());
         return costoRepository.save(costo);
     }

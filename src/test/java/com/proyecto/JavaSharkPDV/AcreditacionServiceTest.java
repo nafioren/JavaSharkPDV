@@ -19,7 +19,7 @@ import static org.mockito.Mockito.any;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@ExtendWith(MockitoExtension.class) // Habilita el uso de Mockito en JUnit 5
+@ExtendWith(MockitoExtension.class)
 public class AcreditacionServiceTest {
 
     @Mock
@@ -29,7 +29,7 @@ public class AcreditacionServiceTest {
     private PuntoDeVentaRepository puntoDeVentaRepository;
 
     @InjectMocks
-    private AcreditacionService acreditacionService; // Clase que probamos
+    private AcreditacionService acreditacionService;
 
     @Test
     public void testRegistrar() {

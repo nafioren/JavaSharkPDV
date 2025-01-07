@@ -36,7 +36,7 @@ public class DijkstraAlgoritmo {
             Map<Long, Long> predecesores = new HashMap<>();
             PriorityQueue<Pair<Long, Integer>> cola = new PriorityQueue<>(Comparator.comparingInt(Pair::getRight));
 
-            // Inicialización
+
             puntoDeVentaRepository.findAll().forEach(p -> distancias.put(p.getId(), Integer.MAX_VALUE));
             distancias.put(inicio, 0); // Distancia al nodo de inicio es 0
             cola.add(Pair.of(inicio, 0));
