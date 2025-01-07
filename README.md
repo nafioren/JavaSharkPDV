@@ -71,28 +71,6 @@ Ejecuta el siguiente comando en la terminal desde la raíz del proyecto:
 mvn jacoco:prepare-agent test jacoco:report
 ```
 
-# Documentación de la API
-
-## Swagger UI
-
-La documentación de la API está disponible en:
-
-[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
-
-## OpenAPI Configuración
-
-El proyecto incluye una configuración personalizada de OpenAPI en el archivo `OpenApiConfig.java`. 
-
-Si no ves la documentación funcionando correctamente, verifica que las dependencias de **SpringDoc OpenAPI** estén presentes en el archivo `pom.xml`.
-
-```xml
-<dependency>
-    <groupId>org.springdoc</groupId>
-    <artifactId>springdoc-openapi-ui</artifactId>
-    <version>1.7.0</version>
-</dependency>
-```
-
 
 ## Dockerfile
 El archivo Dockerfile utiliza una estructura de dos etapas:
