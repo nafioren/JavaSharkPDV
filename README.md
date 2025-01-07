@@ -23,9 +23,10 @@ docker-compose up --build
 
 El archivo docker-compose.yml hará lo siguiente:
 
--Construirá la imagen de la aplicación Java usando el Dockerfile.
--Levantará un contenedor MySQL con la base de datos PDV.
--La aplicación estará disponible en: http://localhost:8080
+- Construirá la imagen de la aplicación Java usando el Dockerfile.  
+- Levantará un contenedor MySQL con la base de datos PDV.  
+- La aplicación estará disponible en: [http://localhost:8080](http://localhost:8080)
+
 
 ## Configuración Manual Base de Datos MySQL
 -Si no usas Docker, configura una base de datos MySQL manualmente:
