@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Acreditación</title>
+</head>
+<body>
+<h1>Editar Acreditación</h1>
+<!--/*@thymesVar id="id" type=""*/-->
+<!--/*@thymesVar id="acreditacion" type=""*/-->
+<!--/*@thymesVar id="puntoId" type=""*/-->
+<form th:action="@{/puntos-venta/{id}/acreditaciones/{acreditacionId}(id=${puntoId}, acreditacionId=${acreditacion.id})}" method="post">
+    <!--/*@thymesVar id="descripcion" type=""*/-->
+    <!--/*@thymesVar id="acreditacion" type=""*/-->
+    <input type="text" name="descripcion" th:value="${acreditacion.descripcion}" placeholder="Descripción">
+    <select name="estado">
+        <!--/*@thymesVar id="estado" type=""*/-->
+        <!--/*@thymesVar id="acreditacion" type=""*/-->
+        <option value="pendiente" th:selected="${acreditacion.estado == 'pendiente'}">Pendiente</option>
+        <!--/*@thymesVar id="estado" type=""*/-->
+        <!--/*@thymesVar id="acreditacion" type=""*/-->
+        <option value="aprobada" th:selected="${acreditacion.estado == 'aprobada'}">Aprobada</option>
+        <!--/*@thymesVar id="estado" type=""*/-->
+        <!--/*@thymesVar id="acreditacion" type=""*/-->
+        <option value="rechazada" th:selected="${acreditacion.estado == 'rechazada'}">Rechazada</option>
+    </select>
+    <button type="submit">Guardar Cambios</button>
+</form>
+</body>
+</html>
