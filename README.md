@@ -17,7 +17,7 @@ Tener instalados los siguientes programas antes de continuar:
 git clone https://github.com/nafioren/JavaSharkPDV.git
 cd JavaSharkPDV
 
-##Levantar el Proyecto con Docker
+## Levantar el Proyecto con Docker
 Levanta los contenedores usando Docker Compose:
 docker-compose up --build
 
@@ -27,7 +27,7 @@ El archivo docker-compose.yml hará lo siguiente:
 -Levantará un contenedor MySQL con la base de datos PDV.
 -La aplicación estará disponible en: http://localhost:8080
 
-##Configuración Manual Base de Datos MySQL
+## Configuración Manual Base de Datos MySQL
 -Si no usas Docker, configura una base de datos MySQL manualmente:
 
 Crea la base de datos:
@@ -49,12 +49,12 @@ Ejecutar Pruebas Unitarias
 El proyecto utiliza Surefire para ejecutar las pruebas:
 mvn test
 
-##Generar Reporte de Cobertura (Jacoco)
+## Generar Reporte de Cobertura (Jacoco)
 -Para generar un informe de cobertura:
 mvn jacoco:prepare-agent test jacoco:report
 El informe estará disponible en: target/site/jacoco/index.html
 
-##Documentación de la API
+## Documentación de la API
 Swagger UI
 La documentación de la API está disponible en:
 
@@ -70,7 +70,7 @@ verifica que las dependencias de SpringDoc OpenAPI estén presentes en el archiv
     <version>1.7.0</version>
 </dependency>
 
-##Dockerfile
+## Dockerfile
 El archivo Dockerfile utiliza una estructura de dos etapas:
 
 Etapa 1: Construcción del Proyecto
@@ -97,7 +97,7 @@ EXPOSE 8080
 # Comando para ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
-##Docker Compose
+## Docker Compose
 -El archivo docker-compose.yml levanta la aplicación y la base de datos:
 
 version: '3.8'
@@ -143,11 +143,10 @@ services:
 
 - *Testcontainers*
 
-##Detalles adicionales
+## Detalles adicionales
 
 Swagger/OpenAPI: Si no funciona correctamente, asegúrate de que las dependencias estén en el pom.xml.
 Pasos claros: He dividido cada sección para que sea comprensible incluso para alguien que no esté familiarizado con el proyecto.
-
 
 
 
