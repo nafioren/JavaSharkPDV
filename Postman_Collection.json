@@ -1,0 +1,165 @@
+
+{
+  "info": {
+    "_postman_id": "b81b344e-7163-4734-88fe-ad0b60641b06",
+    "name": "API Endpoints - Puntos de Venta, Costos, Acreditaciones",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Puntos de Venta",
+      "item": [
+        {
+          "name": "Obtener todos los puntos de venta",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:8080/api/puntos-venta"
+          },
+          "response": []
+        },
+        {
+          "name": "Registrar un punto de venta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Rosario\"\n}"
+            },
+            "url": "http://localhost:8080/api/puntos-venta"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Costos",
+      "item": [
+        {
+          "name": "Agregar un costo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idOrigen\": 1,\n  \"idDestino\": 2,\n  \"costo\": 2\n}"
+            },
+            "url": "http://localhost:8080/api/costos"
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar un costo",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/costos?idOrigen=1&idDestino=2",
+              "host": ["localhost"],
+              "path": ["api", "costos"],
+              "port": "8080",
+              "query": [
+                {"key": "idOrigen", "value": "1"},
+                {"key": "idDestino", "value": "2"}
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener costo directo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/costos/costo-directo?idOrigen=1&idDestino=3",
+              "host": ["localhost"],
+              "path": ["api", "costos", "costo-directo"],
+              "port": "8080",
+              "query": [
+                {"key": "idOrigen", "value": "1"},
+                {"key": "idDestino", "value": "3"}
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Calcular camino mínimo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/costos/camino-minimo?idOrigen=1&idDestino=5",
+              "host": ["localhost"],
+              "path": ["api", "costos", "camino-minimo"],
+              "port": "8080",
+              "query": [
+                {"key": "idOrigen", "value": "1"},
+                {"key": "idDestino", "value": "5"}
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Acreditaciones",
+      "item": [
+        {
+          "name": "Registrar una acreditación",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"importe\": 1500.50,\n  \"puntoVentaId\": 1\n}"
+            },
+            "url": "http://localhost:8080/api/acreditaciones"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener todas las acreditaciones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:8080/api/acreditaciones"
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar una acreditación",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/acreditaciones/CABA",
+              "host": ["localhost"],
+              "path": ["api", "acreditaciones", "CABA"],
+              "port": "8080"
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

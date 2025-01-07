@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.*;
 import java.util.*;
 
-class DijkstraAlgoritmoTest {
+public class DijkstraAlgoritmoTest {
 
 
         @Mock
