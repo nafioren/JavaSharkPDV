@@ -31,12 +31,12 @@ El archivo docker-compose.yml hará lo siguiente:
 
 - Si no usas Docker, configura una base de datos MySQL manualmente:  
 
-  1. Crea la base de datos:  
+   Crea la base de datos:  
      ```sql
      CREATE DATABASE PDV;
      ```
 
-  2. Configura el archivo `application.properties` para conectar a la base de datos local:  
+   Configura el archivo `application.properties` para conectar a la base de datos local:  
      ```properties
      spring.datasource.url=jdbc:mysql://localhost:3306/pdv  
      spring.datasource.username=root  
