@@ -50,19 +50,27 @@ El archivo docker-compose.yml hará lo siguiente:
   mvn clean package
 
 - Ejecuta el JAR generado:
- ```bash
- java -jar target/JavaSharkPDV-0.0.1-SNAPSHOT.jar
- ```
+  ```bash
+  java -jar target/JavaSharkPDV-0.0.1-SNAPSHOT.jar
+  ```
 
 Pruebas y Reportes
 Ejecutar Pruebas Unitarias
 El proyecto utiliza Surefire para ejecutar las pruebas:
 mvn test
 
-## Generar Reporte de Cobertura (Jacoco)
--Para generar un informe de cobertura:
+# Generar Reporte de Cobertura (JaCoCo)
+
+Para generar un informe de cobertura de pruebas con JaCoCo, sigue estos pasos:
+
+### Paso 1: Ejecutar el comando de Maven
+
+Ejecuta el siguiente comando en la terminal desde la raíz del proyecto:
+
+```bash
 mvn jacoco:prepare-agent test jacoco:report
-El informe estará disponible en: target/site/jacoco/index.html
+```
+
 # Documentación de la API
 
 ## Swagger UI
@@ -83,6 +91,7 @@ Si no ves la documentación funcionando correctamente, verifica que las dependen
     <artifactId>springdoc-openapi-ui</artifactId>
     <version>1.7.0</version>
 </dependency>
+```
 
 
 ## Dockerfile
