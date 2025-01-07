@@ -29,20 +29,29 @@ El archivo docker-compose.yml hará lo siguiente:
 
 
 ## Configuración Manual Base de Datos MySQL
--Si no usas Docker, configura una base de datos MySQL manualmente:
 
-Crea la base de datos:
-CREATE DATABASE PDV;
+- Si no usas Docker, configura una base de datos MySQL manualmente:  
 
-Configura el archivo application.properties para conectar a la base de datos local:
-spring.datasource.url=jdbc:mysql://localhost:3306/pdv
-spring.datasource.username=root
-spring.datasource.password=root
+  1. Crea la base de datos:  
+     ```sql
+     CREATE DATABASE PDV;
+     ```
 
--Ejecutar el Proyecto Localmente
-Compilar el proyecto:
-mvn clean package
-Ejecuta el JAR generado:
+  2. Configura el archivo `application.properties` para conectar a la base de datos local:  
+     ```properties
+     spring.datasource.url=jdbc:mysql://localhost:3306/pdv  
+     spring.datasource.username=root  
+     spring.datasource.password=root
+     ```
+
+## Ejecutar el Proyecto Localmente
+
+- Compila el proyecto:  
+  ```bash
+  mvn clean package
+
+
+- Ejecuta el JAR generado:
 java -jar target/JavaSharkPDV-0.0.1-SNAPSHOT.jar
 
 Pruebas y Reportes
