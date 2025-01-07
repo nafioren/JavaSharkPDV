@@ -144,8 +144,6 @@ services:
 
 - *JUnit 5*
 
-- *Swagger/OpenAPI*
-
 - *Testcontainers*
 
 
