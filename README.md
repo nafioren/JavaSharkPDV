@@ -156,13 +156,13 @@ services:
 
 - *Java 17*
 
-- *Spring Boot 3.x*: Framework para desarrollo del backend.
+- *Spring Boot 3.x*
 
 - *MySQL*
 
 - *Docker*
 
-- *Postman*: Para pruebas de endpoints.
+- *Postman*
 
 - *JUnit 5*
 
@@ -170,11 +170,9 @@ services:
 
 - *Testcontainers*
 
-## Detalles adicionales
 
-Swagger/OpenAPI: Si no funciona correctamente, asegúrate de que las dependencias estén en el pom.xml.
 
-Pasos claros: He dividido cada sección para que sea comprensible incluso para alguien que no esté familiarizado con el proyecto.
+
 
 
 
