@@ -49,8 +49,6 @@ El archivo docker-compose.yml hará lo siguiente:
   ```bash
   mvn clean package
 
-
-
 - Ejecuta el JAR generado:
  ```bash
 java -jar target/JavaSharkPDV-0.0.1-SNAPSHOT.jar
@@ -161,6 +159,7 @@ services:
 ## Detalles adicionales
 
 Swagger/OpenAPI: Si no funciona correctamente, asegúrate de que las dependencias estén en el pom.xml.
+
 Pasos claros: He dividido cada sección para que sea comprensible incluso para alguien que no esté familiarizado con el proyecto.
 
 
