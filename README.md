@@ -98,8 +98,10 @@ EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
 ## Docker Compose
--El archivo docker-compose.yml levanta la aplicación y la base de datos:
 
+El archivo `docker-compose.yml` levanta la aplicación y la base de datos:
+
+```yaml
 version: '3.8'
 
 services:
@@ -124,6 +126,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
+```
 	  
 ## Tecnologías Utilizadas
 
